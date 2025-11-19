@@ -1,4 +1,4 @@
-# Learning Management System (LMS) – Backend API
+Learning Management System (LMS) – Backend API
 
 A full-featured Django REST Framework backend that implements modern API practices such as a custom user model, JWT authentication, permissions, filtering, search, ordering, pagination, and auto-generated API documentation.
 
@@ -6,9 +6,9 @@ This project was built step-by-step following a complete backend roadmap.
 
 ---
 
-## 🚀 Features
+🚀 Features
 
-### **1. Custom User Model (Most Important Part)**
+**1. Custom User Model (Most Important Part)**
 
 The project replaces Django’s default user with a **CustomUser model** that supports:
 
@@ -19,7 +19,7 @@ The project replaces Django’s default user with a **CustomUser model** that su
 * `bio`
 * `role` (student/instructor/admin)
 
-### 🔐 Secure Password Handling
+🔐 Secure Password Handling
 
 Passwords are never stored as plain text.
 A custom serializer handles hashing:
@@ -44,7 +44,7 @@ This ensures the user’s password is safely hashed before saving.
 
 ---
 
-## 🔑 JWT Authentication (SimpleJWT)
+🔑 JWT Authentication (SimpleJWT)
 
 The project uses **SimpleJWT** for login, token refresh, and secure access.
 
@@ -57,7 +57,7 @@ Endpoints include:
 
 ---
 
-## 👮 Permissions & Access Control
+👮 Permissions & Access Control
 
 The project uses:
 
@@ -73,7 +73,7 @@ Examples:
 
 ---
 
-## 🔎 Filtering, Search & Ordering
+🔎 Filtering, Search & Ordering
 
 DjangoFilter + DRF Search + Ordering are applied globally.
 
@@ -86,14 +86,14 @@ Example (User list):
 Query examples:
 
 ```
-/api/users/?search=john
+/api/users/?search=banu
 /api/users/?role=student
 /api/users/?ordering=email
 ```
 
 ---
 
-## 📄 Pagination
+📄 Pagination
 
 Custom pagination using DRF PageNumberPagination:
 
@@ -109,7 +109,7 @@ Example:
 
 ---
 
-## 📚 API Documentation (Swagger / Redoc)
+📚 API Documentation (Swagger / Redoc)
 
 Interactive documentation included using **drf-yasg**:
 
@@ -118,7 +118,7 @@ Interactive documentation included using **drf-yasg**:
 
 ---
 
-## 📘 Project Structure
+📘 Project Structure
 
 ```
 lms_api/
@@ -145,28 +145,27 @@ lms_api/
 
 ---
 
-## ⚙️ Installation & Setup
+⚙️ Installation & Setup
 
-### 1. Clone the project
+1. Clone the project
 
 ```
 git clone https://github.com/<your-username>/learning-management-system-backend.git
 cd learning-management-system-backend
 ```
-
-### 2. Install dependencies
+2. Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-### 3. Apply migrations
+3. Apply migrations
 
 ```
 python manage.py migrate
 ```
 
-### 4. Start the server
+4. Start the server
 
 ```
 python manage.py runserver
@@ -174,7 +173,7 @@ python manage.py runserver
 
 ---
 
-## 🧪 Testing
+🧪 Testing
 
 Use:
 
@@ -185,9 +184,8 @@ Use:
 
 ---
 
-## 🎯 Roadmap Coverage Summary
 
-This project includes **EVERY concept** from the backend roadmap:
+🎯 This project includes:
 
 ✔ Django models
 ✔ Migrations
@@ -205,7 +203,7 @@ This project includes **EVERY concept** from the backend roadmap:
 
 ---
 
-## 📬 Author
+📬 Author
 
 Developed by **banumariwan**
 For backend learning, DRF mastery, and real-world API experience.
